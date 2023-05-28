@@ -164,6 +164,7 @@ fig, ax = plt.subplots()
 ax.imshow(Gaussian, cmap = 'gray')
 ax.title.set_text("Gaussian Filter")
 
+#Computing Mean Squared error values of each filter to find which filter performed well - The lower the better
 mse_mean = mean_squared_error(image, Mean)
 mse_median = mean_squared_error(image, Median)
 mse_gaussian = mean_squared_error(image, Gaussian)
@@ -212,8 +213,7 @@ y[test] = sv.predict(X[test])
 supervised_sv = y.reshape(r, c)
 svm = Image.fromarray(palette[supervised_sv])
 svm.show()
-print("/***Accuracy score of SVM***\\")
-print("{:.2f}".format(sv.score(X[train], y[train]) * 100))
+
 
 #Random_Forest
 random_forest = RandomForestClassifier()
@@ -222,8 +222,7 @@ y[test] = random_forest.predict(X[test])
 supervised_rf = y.reshape(r, c)
 rf = Image.fromarray(palette[supervised_rf])
 rf.show()
-print("/***Accuracy score of Random forest***\\")
-print("{:.2f}".format(random_forest.score(X[train], y[train])*100))
+
 
 #Decision Tree
 decision_tree = DecisionTreeClassifier()
@@ -232,8 +231,6 @@ y[test] = decision_tree.predict(X[test])
 supervised_dt = y.reshape(r, c)
 dt = Image.fromarray(palette[supervised_dt])
 dt.show()
-print("/***Accuracy score of Decision Tree***\\")
-print("{:.2f}".format(decision_tree.score(X[train], y[train])*100))
 
 
 plt.show()
