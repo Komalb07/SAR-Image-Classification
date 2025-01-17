@@ -71,18 +71,6 @@ The techniques used aim to enhance SAR image interpretability and enable robust 
 - **Supervised Learning**:
   - SVM, Decision Tree, and Random Forest classifiers yielded visually distinct segmentation for urban, vegetation, and water classes.
 
-## Repository Structure
-
-```
-SAR-Image-Classification/
-├── data/                     # Input SAR image files
-├── output/                   # Filtered and classified outputs
-├── filters/                  # Filtering methods
-├── classifiers/              # Classification models
-├── sar_classification.py     # Main script
-└── README.md                 # Project documentation
-```
-
 ## Requirements
 
 - Python 3.8 or later
