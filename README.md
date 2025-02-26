@@ -1,80 +1,71 @@
-# SAR-Image-Classification
+# SAR Image Classification
 
-This repository contains the implementation of a **Synthetic Aperture Radar (SAR) Image Classification** pipeline. The project explores image filtering techniques, feature enhancement, and classification methodologies to segment SAR images into meaningful categories such as **urban**, **vegetation**, and **water**.
+This repository contains the implementation of a **Synthetic Aperture Radar (SAR) Image Classification** pipeline. The project explores **image filtering techniques**, **feature enhancement**, and **machine learning-based classification** to segment SAR images into meaningful categories: **urban, vegetation, and water**.
 
-## Project Overview
+## 📌 Project Overview
 
-Synthetic Aperture Radar (SAR) images provide valuable data for remote sensing applications but often suffer from noise, such as speckle, that can obscure meaningful information. This project addresses these challenges by:
+Synthetic Aperture Radar (SAR) images provide valuable data for **remote sensing applications** but suffer from noise, such as **speckle**, which can obscure meaningful information. This project addresses these challenges by:
 
-- Applying advanced filtering techniques to reduce noise.
-- Implementing supervised and unsupervised machine learning models for classification.
-- Evaluating the performance of each filter and classifier based on Mean Squared Error (MSE) and classification accuracy.
+- **Applying advanced filtering techniques** to enhance image quality.
+- **Using machine learning models** for SAR image classification.
+- **Evaluating model performance** using **Mean Squared Error (MSE) and classification accuracy**.
 
-The techniques used aim to enhance SAR image interpretability and enable robust segmentation.
+The goal is to **improve SAR image interpretability** and enable robust segmentation for **geospatial and environmental analysis**.
 
-## Key Features
+## 📌 Key Features
 
-1. **Noise Reduction**:
-   - Implemented filtering methods including:
-     - Boxcar Filter
-     - Refined Lee Filter
-     - Median Filter
-     - Mean Filter
-     - Gaussian Filter
-   - Calculated Mean Squared Error (MSE) to evaluate each filter’s effectiveness.
+- **SAR Image Preprocessing**: Reads **HH and HV polarization bands**, enhances intensity, and performs multilooking.
+- **Speckle Noise Reduction**: Implements **five filtering techniques** to improve image clarity.
+- **Automated Image Segmentation**: Uses **Unsupervised (K-Means) and Supervised (SVM, Decision Tree, Random Forest) classifiers**.
+- **Performance Evaluation**: Assesses **filter effectiveness (MSE)** and **classifier accuracy based on segmented outputs**.
 
-2. **Image Classification**:
-   - **Unsupervised Learning**:
-     - Used K-Means clustering to segment the image into predefined classes.
-   - **Supervised Learning**:
-     - Implemented classifiers like Support Vector Machines (SVM), Decision Trees, and Random Forests for accurate segmentation.
+## 📌 Methodology
 
-3. **Evaluation**:
-   - Quantified filter performance using MSE values.
-   - Assessed classifier performance based on visual results and segmented outputs.
+### **1. Preprocessing & Feature Enhancement**
+- Loaded SAR image bands (**HH and HV polarization**) using `GDAL`.
+- Enhanced image intensity and performed **multilooking** for improved visualization.
 
-## Methodology
+### **2. Noise Reduction (Filtering)**
+Applied the following **speckle noise filters**:
+- **Boxcar Filter**: Averages pixel values within a moving window.
+- **Refined Lee Filter**: Balances noise reduction with edge preservation.
+- **Median Filter**: Removes noise while maintaining edges.
+- **Mean Filter**: Applies a kernel-based averaging approach.
+- **Gaussian Filter**: Smooths image using a Gaussian kernel.
 
-### 1. Preprocessing
-- Read SAR image bands (HH and HV polarization) using GDAL.
-- Enhanced image intensity and performed multilooking for better visualization.
+### **3. Image Classification**
+- **Unsupervised Learning**: Used **K-Means clustering** to segment SAR images.
+- **Supervised Learning**: Implemented **Support Vector Machine (SVM), Decision Tree, and Random Forest Classifiers** to classify urban, vegetation, and water areas.
 
-### 2. Filtering
-- Applied the following filters to reduce speckle noise:
-  - **Boxcar Filter**: Uses a simple moving average to smooth the image.
-  - **Refined Lee Filter**: Balances noise reduction and feature preservation.
-  - **Median Filter**: Retains edges while reducing noise.
-  - **Mean Filter**: Uses a kernel-based averaging approach.
-  - **Gaussian Filter**: Blurs the image using a Gaussian kernel.
+### **4. Model Evaluation**
+- **Filtering Performance**: Measured using **Mean Squared Error (MSE)**.
+- **Classification Accuracy**: Evaluated based on **segmentation quality** and classifier performance.
 
-### 3. Classification
-- Performed **unsupervised classification** using K-Means clustering.
-- Conducted **supervised classification** using:
-  - Support Vector Machine (SVM)
-  - Decision Tree Classifier
-  - Random Forest Classifier
-- Defined classes: Urban, Vegetation, and Water.
+## 📌 Results
 
-## Results
-
-### Filter Performance
+### **Filter Performance (MSE)**
 | Filter            | Mean Squared Error (MSE) |
-|--------------------|---------------------------|
-| Mean Filter        | *30.535*                  |
-| Median Filter      | *36.116*                  |
-| Gaussian Filter    | *35.177*                  |
-| Refined Lee Filter | *14.0005*                  |
-| Boxcar Filter      | *29.559*                  |
+|------------------|-------------------------|
+| Mean Filter      | *30.535*                 |
+| Median Filter    | *36.116*                 |
+| Gaussian Filter  | *35.177*                 |
+| Refined Lee      | **14.0005** (Best)       |
+| Boxcar Filter    | *29.559*                 |
 
-### Classification Outputs
-- **Unsupervised Learning**: Segmented image using K-Means clustering.
+**Key Insights:**
+- **Refined Lee Filter** provided the **lowest MSE**, indicating **better noise suppression and feature preservation**.
+- **Median and Gaussian Filters** retained more image details but resulted in **higher MSE** due to residual speckle noise.
+
+### **Classification Results**
+- **Unsupervised Learning** (K-Means) provided a **preliminary segmentation** but lacked class labels.
 - **Supervised Learning**:
-  - SVM, Decision Tree, and Random Forest classifiers yielded visually distinct segmentation for urban, vegetation, and water classes.
+  - **SVM, Decision Tree, and Random Forest** successfully segmented images into **urban, vegetation, and water**.
+  - **Random Forest performed best**, achieving **clearer segmentation and robustness to noise**.
 
-## Requirements
+## 📌 Requirements
 
-- Python 3.8 or later
-- Required libraries:
+- Python 3.8+
+- Required Libraries:
   - `GDAL`
   - `Pillow`
   - `numpy`
@@ -83,8 +74,8 @@ The techniques used aim to enhance SAR image interpretability and enable robust 
   - `matplotlib`
   - `astropy`
 
-## Future Enhancements
+## 📌 Future Enhancements
 
-- Incorporate additional filters for noise reduction.
-- Explore deep learning models for SAR image classification.
-- Implement real-time processing for large datasets.
+- **Enhance Filtering Techniques**: Test adaptive and deep-learning-based noise reduction methods.
+- **Improve Classification Accuracy**: Explore **CNN-based deep learning models** for SAR classification.
+- **Real-Time Processing**: Optimize for **large-scale datasets** with **faster computation**.
