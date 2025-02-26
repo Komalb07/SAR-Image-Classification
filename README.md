@@ -73,9 +73,7 @@ Applied the following **speckle noise filters**:
   - `scikit-learn`
   - `matplotlib`
   - `astropy`
+ 
+## Challenges Faced
 
-## Future Enhancements
-
-- **Enhance Filtering Techniques**: Test adaptive and deep-learning-based noise reduction methods.
-- **Improve Classification Accuracy**: Explore **CNN-based deep learning models** for SAR classification.
-- **Real-Time Processing**: Optimize for **large-scale datasets** with **faster computation**.
+Unrealistically High Classification Accuracy: During model evaluation, the SVM, Decision Tree, and Random Forest classifiers yielded over 99% accuracy, which is highly unusual for SAR image classification. This suggests a potential issue with dataset partitioning, class distribution, or feature scaling that requires further investigation.
